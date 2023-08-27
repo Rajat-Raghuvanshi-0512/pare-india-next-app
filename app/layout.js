@@ -3,12 +3,26 @@ import { Footer, Navbar } from '@/components';
 import './globals.css';
 import { Inter } from 'next/font/google';
 import MainLoader from '@/components/MainLoader';
-import { useEffect, useState } from 'react';
-
+import { useEffect, useMemo, useState } from 'react';
+import useBlobity from 'blobity/lib/react/useBlobity';
 const inter = Inter({ subsets: ['latin'] });
 
 export default function RootLayout({ children }) {
   const [percent, setPercent] = useState(0);
+  const options = useMemo(
+    () => ({
+      color: 'rgb(255, 0, 0)',
+      dotColor: 'rgb(255, 0, 0)',
+      zIndex: 500,
+      opacity: 0.1,
+      licenseKey: 'jsmastery',
+      focusableElements: 'none',
+      size: 30,
+      dotSize: 6,
+    }),
+    []
+  );
+  useBlobity(options);
   useEffect(() => {
     const interval = setInterval(() => {
       if (percent <= 100) {
@@ -21,7 +35,7 @@ export default function RootLayout({ children }) {
   if (percent <= 100) {
     return (
       <html lang="en">
-        <meta charset="utf-8" />
+        <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Pare India</title>
         <body>
@@ -50,7 +64,7 @@ export default function RootLayout({ children }) {
         href="/favicon-16x16.png"
       />
       <link rel="manifest" href="/site.webmanifest" />
-      <meta charset="utf-8" />
+      <meta charSet="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <title>Pare India</title>
       <body className={inter.className}>
