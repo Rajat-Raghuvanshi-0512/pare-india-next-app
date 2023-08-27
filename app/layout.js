@@ -1,6 +1,9 @@
+'use client';
 import { Footer, Navbar } from '@/components';
 import './globals.css';
 import { Inter } from 'next/font/google';
+import MainLoader from '@/components/MainLoader';
+import { useEffect, useState } from 'react';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -10,6 +13,25 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  const [percent, setPercent] = useState(0);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (percent <= 100) {
+        setPercent((prev) => prev + 1);
+      }
+    }, 10);
+    return () => clearInterval(interval);
+  }, [percent]);
+
+  if (percent <= 100) {
+    return (
+      <html lang="en">
+        <body>
+          <MainLoader percent={percent} />
+        </body>
+      </html>
+    );
+  }
   return (
     <html lang="en">
       <link
