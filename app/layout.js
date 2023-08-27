@@ -7,11 +7,6 @@ import { useEffect, useState } from 'react';
 
 const inter = Inter({ subsets: ['latin'] });
 
-export const metadata = {
-  title: 'Pare India',
-  description: 'Pare India, Category:Innovative Designs, Owner:Pare India',
-};
-
 export default function RootLayout({ children }) {
   const [percent, setPercent] = useState(0);
   useEffect(() => {
@@ -26,6 +21,9 @@ export default function RootLayout({ children }) {
   if (percent <= 100) {
     return (
       <html lang="en">
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Pare India</title>
         <body>
           <MainLoader percent={percent} />
         </body>
@@ -52,7 +50,9 @@ export default function RootLayout({ children }) {
         href="/favicon-16x16.png"
       />
       <link rel="manifest" href="/site.webmanifest" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <title>Pare India</title>
       <body className={inter.className}>
         <Navbar />
         {children}
