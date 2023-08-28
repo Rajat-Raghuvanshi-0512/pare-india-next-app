@@ -1,11 +1,9 @@
 'use client';
 import { Footer, Navbar } from '@/components';
 import './globals.css';
-import { Inter } from 'next/font/google';
 import MainLoader from '@/components/MainLoader';
 import { useEffect, useMemo, useState } from 'react';
 import useBlobity from 'blobity/lib/react/useBlobity';
-const inter = Inter({ subsets: ['latin'] });
 
 export default function RootLayout({ children }) {
   const [percent, setPercent] = useState(0);
@@ -37,6 +35,10 @@ export default function RootLayout({ children }) {
       <html lang="en">
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta
+          name="description"
+          content="Pare India, Category:Innovative Designs, Owner:Pare India"
+        />
         <title>Pare India</title>
         <body>
           <MainLoader percent={percent} />
@@ -66,8 +68,12 @@ export default function RootLayout({ children }) {
       <link rel="manifest" href="/site.webmanifest" />
       <meta charSet="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <meta
+        name="description"
+        content="Pare India, Category:Innovative Designs, Owner:Pare India"
+      />
       <title>Pare India</title>
-      <body className={inter.className}>
+      <body>
         <Navbar />
         {children}
         <Footer />
