@@ -1,4 +1,3 @@
-import { lazy } from 'react';
-const Button = lazy(() => import('./Button'));
-const Drawer = lazy(() => import('./Drawer'));
+import Button from './Button';
+import Drawer from './Drawer';
 export { Drawer, Button };

@@ -1,8 +1,7 @@
-import { lazy } from 'react'
-const Loader = lazy(() => import('./Loader'))
-const ContactFloatBtn = lazy(() => import('./ContactFloatBtn'))
-const Footer = lazy(() => import('./Footer'))
-const Navbar = lazy(() => import('./Navbar'))
-const LastSection = lazy(() => import('./LastSection'))
+import Loader from './Loader';
+import ContactFloatBtn from './ContactFloatBtn';
+import Footer from './Footer';
+import Navbar from './Navbar';
+import LastSection from './LastSection';
 
-export { Navbar, ContactFloatBtn, Footer, LastSection, Loader }
+export { Navbar, ContactFloatBtn, Footer, LastSection, Loader };
