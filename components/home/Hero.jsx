@@ -118,7 +118,7 @@ const HeroLg = () => {
         <Button
           className={'mt-5 !px-4 lg:!text-3xl'}
           variant="outlined"
-          onClick={() => navigate('/contact')}
+          onClick={() => router.push('/contact')}
         >
           VIEW PROJECT
         </Button>

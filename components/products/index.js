@@ -1,18 +1,17 @@
-import { lazy } from 'react'
-const PyramidBanner = lazy(() => import('./pyramid/PyramidBanner'))
-const ArchBanner = lazy(() => import('./arch/ArchBanner'))
-const IntroSection = lazy(() => import('./IntroSection'))
-const ProductInfo = lazy(() => import('./ProductInfo'))
-const Brochure = lazy(() => import('./linea/Brochure'))
-const ImgGallery = lazy(() => import('./linea/ImgGallery'))
-const Info = lazy(() => import('./linea/Info'))
-const LineaBanner = lazy(() => import('./linea/LineaBanner'))
-const MoreProducts = lazy(() => import('./linea/MoreProducts'))
-const Shades = lazy(() => import('./linea/Shades'))
-const Trims = lazy(() => import('./linea/Trims'))
-const P1Section1 = lazy(() => import('./product1/P1Section1'))
-const P1Section2 = lazy(() => import('./product1/P1Section2'))
-const Product1Banner = lazy(() => import('./product1/Product1Banner'))
+import PyramidBanner from './pyramid/PyramidBanner';
+import ArchBanner from './arch/ArchBanner';
+import IntroSection from './IntroSection';
+import ProductInfo from './ProductInfo';
+import Brochure from './linea/Brochure';
+import ImgGallery from './linea/ImgGallery';
+import Info from './linea/Info';
+import LineaBanner from './linea/LineaBanner';
+import MoreProducts from './linea/MoreProducts';
+import Shades from './linea/Shades';
+import Trims from './linea/Trims';
+import P1Section1 from './product1/P1Section1';
+import P1Section2 from './product1/P1Section2';
+import Product1Banner from './product1/Product1Banner';
 
 export {
   IntroSection,
@@ -29,4 +28,4 @@ export {
   Trims,
   ArchBanner,
   PyramidBanner,
-}
+};

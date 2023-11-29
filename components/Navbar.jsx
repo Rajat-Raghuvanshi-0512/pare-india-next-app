@@ -1,14 +1,32 @@
-'use client'
-import { BackButton, BurgerMenu, BurgerMenuBlack, CloseIcon, FbIcon, InstaIcon, LinkedInIcon, Logo } from '@/utils/assets'
-import { Drawer } from './custom'
-import { useModal } from '../utils/custom-hooks'
-import { useMotionValueEvent, useScroll } from 'framer-motion'
-import { useState } from 'react'
-import Image from 'next/image'
-import Link from 'next/link'
-import { usePathname, useRouter } from 'next/navigation'
+'use client';
+import {
+  BackButton,
+  BurgerMenu,
+  BurgerMenuBlack,
+  CloseIcon,
+  FbIcon,
+  InstaIcon,
+  LinkedInIcon,
+  Logo,
+} from '@/utils/assets';
+import { Drawer } from './custom';
+import { useModal } from '../utils/custom-hooks';
+import { useMotionValueEvent, useScroll } from 'framer-motion';
+import { useState } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
 
-const greNavRoutes = ['/about', '/products', '/careers', '/faq', '/downloads', '/gallery', '/privacy-policy', '/blog/1']
+const greNavRoutes = [
+  '/about/',
+  '/products/',
+  '/careers/',
+  '/faq/',
+  '/downloads/',
+  '/gallery/',
+  '/privacy-policy/',
+  '/blog/1/',
+];
 
 const navLinks = [
   {
@@ -35,7 +53,7 @@ const navLinks = [
     text: 'contact us',
     path: '/contact',
   },
-]
+];
 
 const navLinksSm = [
   {
@@ -70,21 +88,29 @@ const navLinksSm = [
     text: 'resources',
     dropdown: ['faq', 'blog', 'downloads'],
   },
-]
+];
 
 const NavSm = ({ isScrolled }) => {
-  const { isOpen, closeModal, openModal } = useModal()
-  const [resourcesOpen, setResourcesOpen] = useState(false)
-  const pathname = usePathname()
+  const { isOpen, closeModal, openModal } = useModal();
+  const [resourcesOpen, setResourcesOpen] = useState(false);
+  const pathname = usePathname();
   return (
     <nav
       className={`fixed left-0 top-0 z-[100] w-full ${
-        isScrolled || greNavRoutes.includes(pathname) ? 'bg-[#EBEBEB]' : 'text-white'
+        isScrolled || greNavRoutes.includes(pathname)
+          ? 'bg-[#EBEBEB]'
+          : 'text-white'
       } duration-300 `}
     >
       <div className="mx-4 flex items-center justify-between">
         <div className="flex items-end">
-          <Image src={Logo} width={500} height={400} alt="logo" className="h-16 w-24 object-contain sm:h-20 sm:w-32" />
+          <Image
+            src={Logo}
+            width={500}
+            height={400}
+            alt="logo"
+            className="h-16 w-24 object-contain sm:h-20 sm:w-32"
+          />
         </div>
         <div onClick={openModal}>
           <Image
@@ -109,19 +135,27 @@ const NavSm = ({ isScrolled }) => {
                 src={resourcesOpen ? BackButton : CloseIcon}
                 alt="close"
                 className="ml-auto h-10 w-10"
-                onClick={resourcesOpen ? () => setResourcesOpen(false) : closeModal}
+                onClick={
+                  resourcesOpen ? () => setResourcesOpen(false) : closeModal
+                }
               />
             </div>
-            <ul className={` mt-auto flex w-full flex-col items-end justify-end gap-7 text-white`}>
+            <ul
+              className={` mt-auto flex w-full flex-col items-end justify-end gap-7 text-white`}
+            >
               {navLinksSm.map((link) => {
-                if (resourcesOpen && link.text !== 'resources') return null
+                if (resourcesOpen && link.text !== 'resources') return null;
                 return (
                   <li key={link.text}>
                     {resourcesOpen && (
                       <div className="flex flex-col items-end gap-7 pb-10">
                         {link?.dropdown?.map((item) => (
                           <div key={item}>
-                            <Link href={`/${item}`} className="font-montserrat text-3xl uppercase" onClick={closeModal}>
+                            <Link
+                              href={`/${item}`}
+                              className="font-montserrat text-3xl uppercase"
+                              onClick={closeModal}
+                            >
                               {item}
                             </Link>
                           </div>
@@ -131,28 +165,40 @@ const NavSm = ({ isScrolled }) => {
                     <Link
                       href={`${link.path}`}
                       className="ml-10 w-full text-right font-montserrat text-3xl uppercase"
-                      onClick={link.text === 'resources' ? () => setResourcesOpen(true) : closeModal}
+                      onClick={
+                        link.text === 'resources'
+                          ? () => setResourcesOpen(true)
+                          : closeModal
+                      }
                     >
                       {link.text}
                     </Link>
                   </li>
-                )
+                );
               })}
             </ul>
             <div className="flex items-end justify-end gap-2 pt-5">
-              <Image src={InstaIcon} alt="insta" className="h-8 w-8 object-contain" />
+              <Image
+                src={InstaIcon}
+                alt="insta"
+                className="h-8 w-8 object-contain"
+              />
               <Image src={FbIcon} alt="fb" className="h-8 w-8 object-contain" />
-              <Image src={LinkedInIcon} alt="Ld" className="h-8 w-8 object-contain" />
+              <Image
+                src={LinkedInIcon}
+                alt="Ld"
+                className="h-8 w-8 object-contain"
+              />
             </div>
           </div>
         </Drawer>
       </div>
     </nav>
-  )
-}
+  );
+};
 
 const NavMd = ({ isScrolled, hide }) => {
-  const pathname = usePathname()
+  const pathname = usePathname();
   return (
     <nav
       className={`fixed z-50 w-full ${
@@ -165,16 +211,27 @@ const NavMd = ({ isScrolled, hide }) => {
     >
       <div className="mx-10 flex items-center justify-between border-b-2">
         <div className="flex items-end">
-          <Image src={Logo} width={400} height={400} alt="logo" className="h-12 w-20 object-contain" />
+          <Image
+            src={Logo}
+            width={400}
+            height={400}
+            alt="logo"
+            className="h-12 w-20 object-contain"
+          />
         </div>
         <div>
           <ul className="flex items-center justify-center gap-3">
             {navLinks.map((link) => (
               <li
                 key={link.text}
-                className={`group relative p-2 duration-200 ${link?.dropdown && 'hover:bg-[#EBEBEB]'} `}
+                className={`group relative p-2 duration-200 ${
+                  link?.dropdown && 'hover:bg-[#EBEBEB]'
+                } `}
               >
-                <Link href={`${link.path}`} className="font-montserrat text-sm uppercase hover:text-red-base">
+                <Link
+                  href={`${link.path}`}
+                  className="font-montserrat text-sm uppercase hover:text-red-base"
+                >
                   {link.text}
                 </Link>
                 <div
@@ -199,11 +256,11 @@ const NavMd = ({ isScrolled, hide }) => {
         </div>
       </div>
     </nav>
-  )
-}
+  );
+};
 
 const NavLg = ({ isScrolled, hide }) => {
-  const pathname = usePathname()
+  const pathname = usePathname();
   return (
     <nav
       className={`fixed z-50 w-full ${
@@ -216,11 +273,21 @@ const NavLg = ({ isScrolled, hide }) => {
     >
       <div
         className={`mx-10 flex items-center justify-between 2xl:mx-40 ${
-          isScrolled ? '' : pathname === '/' ? 'border-b-2 border-black' : 'border-b-2 border-white'
+          isScrolled
+            ? ''
+            : pathname === '/'
+            ? 'border-b-2 border-black'
+            : 'border-b-2 border-white'
         }`}
       >
         <div className="flex items-end">
-          <Image src={Logo} width={500} height={400} alt="logo" className="h-16 w-28 object-contain" />
+          <Image
+            src={Logo}
+            width={500}
+            height={400}
+            alt="logo"
+            className="h-16 w-28 object-contain"
+          />
         </div>
         <div>
           <ul className="flex items-center justify-center gap-8">
@@ -231,7 +298,10 @@ const NavLg = ({ isScrolled, hide }) => {
                   link?.dropdown && 'hover:bg-[#EBEBEB] hover:text-red-base'
                 } `}
               >
-                <Link href={`${link.path || '#'}`} className="font-montserrat text-xl uppercase hover:text-red-base">
+                <Link
+                  href={`${link.path || '#'}`}
+                  className="font-montserrat text-xl uppercase hover:text-red-base"
+                >
                   {link.text}
                 </Link>
                 <div
@@ -256,32 +326,32 @@ const NavLg = ({ isScrolled, hide }) => {
         </div>
       </div>
     </nav>
-  )
-}
+  );
+};
 
 const Navbar = () => {
-  const { scrollY } = useScroll()
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [hide, setHide] = useState(false)
-  const [prevScroll, setPrevScroll] = useState(0)
+  const { scrollY } = useScroll();
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [hide, setHide] = useState(false);
+  const [prevScroll, setPrevScroll] = useState(0);
   useMotionValueEvent(scrollY, 'change', (currScroll) => {
     if (currScroll <= 0) {
-      setHide(false)
-      setIsScrolled(false)
-      return
+      setHide(false);
+      setIsScrolled(false);
+      return;
     }
     if (currScroll > 10) {
-      setIsScrolled(true)
+      setIsScrolled(true);
     } else {
-      setIsScrolled(false)
+      setIsScrolled(false);
     }
     if (prevScroll > currScroll) {
-      setHide(false)
+      setHide(false);
     } else {
-      setHide(true)
+      setHide(true);
     }
-    setPrevScroll(currScroll)
-  })
+    setPrevScroll(currScroll);
+  });
   return (
     <div>
       <div className="md:hidden">
@@ -294,7 +364,7 @@ const Navbar = () => {
         <NavLg isScrolled={isScrolled} hide={hide} />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
