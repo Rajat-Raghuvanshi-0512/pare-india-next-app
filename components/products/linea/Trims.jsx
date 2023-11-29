@@ -19,13 +19,15 @@ const Trims = ({ Jimages, trim }) => {
           <SwiperSlide className="!-z-50" key={image + idx}>
             <Image
               src={TrimWoodBg1}
-              alt=""
+              alt="bg"
+              width={1200}
+              height={900}
               className="h-full w-full object-cover"
             />
             <Image
               src={image}
               alt={'bg'}
-              width={300}
+              width={600}
               height={300}
               className={
                 'absolute -right-5 -top-16 ml-auto h-full w-[90%] object-contain object-right lg:right-0 lg:top-0 lg:w-[70%]'

@@ -1,14 +1,14 @@
-'use client'
-import { useRef } from 'react'
-import { HeadAvatar } from '@/utils/assets'
-import { useInView } from 'framer-motion'
-import { desk, sofa, sofa1000 } from '@/utils/assets'
-import Image from 'next/image'
-import CountUp from 'react-countup'
+'use client';
+import { useRef } from 'react';
+import { HeadAvatar } from '@/utils/assets';
+import { useInView } from 'framer-motion';
+import { desk, sofa, sofa1000 } from '@/utils/assets';
+import Image from 'next/image';
+import CountUp from 'react-countup';
 
 const AboutSectionSm = () => {
-  const numbersRef = useRef(null)
-  const numbersInView = useInView(numbersRef)
+  const numbersRef = useRef(null);
+  const numbersInView = useInView(numbersRef);
   return (
     <section className="bg-black-base p-5 text-white md:p-10 lg:px-20  ">
       <h2 className="m-5 font-montserrat text-4xl font-bold leading-snug">
@@ -19,7 +19,9 @@ const AboutSectionSm = () => {
           <Image src={HeadAvatar} alt="arun" width={60} className="mx-auto" />
           <div>
             <h4 className="font-montserrat text-xl font-medium">ARUN MAINI</h4>
-            <p className="font-metropolis text-xs font-light">Head of Customer Service, Pare India</p>
+            <p className="font-metropolis text-xs font-light">
+              Head of Customer Service, Pare India
+            </p>
           </div>
         </div>
       </div>
@@ -38,22 +40,24 @@ const AboutSectionSm = () => {
         </div>
         <div>
           <p className="mr-2 mt-8 font-helvetica text-xs leading-tight">
-            Our vision is to impart a global outreach to Indian made Interior products.
+            Our vision is to impart a global outreach to Indian made Interior
+            products.
           </p>
           <p className="mr-2 mt-2 font-helvetica text-xs leading-tight">
-            We identify innovative global trends and manufacture a matchless range in India.
+            We identify innovative global trends and manufacture a matchless
+            range in India.
           </p>
           {numbersInView && (
             <>
               <div className="mt-2 grid grid-cols-2">
                 <p className="font-metropolis text-xl font-bold text-red-base">
-                  <CountUp end={10} duration={3} />+
+                  <CountUp end={15} duration={3} />+
                 </p>
-                <p className="font-helvetica text-[10px]">Quality Products</p>
+                <p className="font-helvetica text-[5px]">Quality Products</p>
               </div>
               <div className="grid grid-cols-2">
                 <p className="font-metropolis text-xl font-bold text-red-base">
-                  <CountUp end={25} duration={3} />+
+                  <CountUp end={45} duration={3} />+
                 </p>
                 <p className="font-helvetica text-[10px]">Shades TO CHoose </p>
               </div>
@@ -69,12 +73,12 @@ const AboutSectionSm = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
 const AboutSectionLg = () => {
-  const numbersRef = useRef(null)
-  const numbersInView = useInView(numbersRef)
+  const numbersRef = useRef(null);
+  const numbersInView = useInView(numbersRef);
   return (
     <section className="bg-black-base p-5 text-white">
       <div className="md:p-10 lg:px-20">
@@ -83,9 +87,18 @@ const AboutSectionLg = () => {
         </h2>
         <div className="my-5 flex items-center justify-center text-center md:my-10 lg:my-20">
           <div className="flex flex-col gap-3">
-            <Image src={HeadAvatar} alt="arun" width={100} className="mx-auto" />
-            <h4 className="font-montserrat text-xl font-medium lg:text-3xl">ARUN MAINI</h4>
-            <p className="font-metropolis font-light">Head of Customer Service, Pare India</p>
+            <Image
+              src={HeadAvatar}
+              alt="arun"
+              width={100}
+              className="mx-auto"
+            />
+            <h4 className="font-montserrat text-xl font-medium lg:text-3xl">
+              ARUN MAINI
+            </h4>
+            <p className="font-metropolis font-light">
+              Head of Customer Service, Pare India
+            </p>
           </div>
         </div>
       </div>
@@ -102,24 +115,30 @@ const AboutSectionLg = () => {
           </div>
         </div>
         <div className="flex flex-col justify-end text-right">
-          <h3 className="font-metropolis font-bold uppercase text-red-base md:text-4xl lg:text-5xl">About Us</h3>
+          <h3 className="font-metropolis font-bold uppercase text-red-base md:text-4xl lg:text-5xl">
+            About Us
+          </h3>
           <p className="ml-10 mt-8 font-helvetica text-xl leading-tight lg:text-2xl">
-            Our vision is to impart a global outreach to Indian made Interior products. We identify innovative global
-            trends and manufacture a matchless range in India.
+            Our vision is to impart a global outreach to Indian made Interior
+            products. We identify innovative global trends and manufacture a
+            matchless range in India.
           </p>
           <div className="mt-5 grid grid-cols-2 gap-5 lg:mt-14 lg:gap-10">
-            <div className="-ml-5 hidden items-end gap-5 text-center uppercase md:flex" ref={numbersRef}>
+            <div
+              className="-ml-5 hidden items-end gap-5 text-center uppercase md:flex"
+              ref={numbersRef}
+            >
               {numbersInView && (
                 <>
                   <div>
                     <p className="font-metropolis text-xl font-bold text-red-base lg:text-2xl">
-                      <CountUp end={10} duration={3} />+
+                      <CountUp end={15} duration={3} />+
                     </p>
                     <p className="font-helvetica text-xs">Quality Products</p>
                   </div>
                   <div>
                     <p className="font-metropolis text-xl font-bold text-red-base lg:text-2xl">
-                      <CountUp end={25} duration={3} />+
+                      <CountUp end={45} duration={3} />+
                     </p>
                     <p className="font-helvetica text-xs">Shades TO CHoose </p>
                   </div>
@@ -148,12 +167,12 @@ const AboutSectionLg = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
 const AboutUsSection = () => {
-  const numbersRef = useRef(null)
-  const numbersInView = useInView(numbersRef)
+  const numbersRef = useRef(null);
+  const numbersInView = useInView(numbersRef);
   return (
     <div>
       <div className="md:hidden">
@@ -163,7 +182,7 @@ const AboutUsSection = () => {
         <AboutSectionLg numbersRef={numbersRef} numbersInView={numbersInView} />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default AboutUsSection
+export default AboutUsSection;

@@ -1,4 +1,4 @@
-import { Footer, Navbar } from '@/components';
+import { ContactFloatBtn, Footer, Navbar } from '@/components';
 import './globals.css';
 
 export default function RootLayout({ children }) {
@@ -32,6 +32,7 @@ export default function RootLayout({ children }) {
       <body>
         <Navbar />
         {children}
+        <ContactFloatBtn />
         <Footer />
       </body>
     </html>

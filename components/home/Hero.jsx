@@ -1,12 +1,19 @@
-'use client'
-import { useState, useEffect, useCallback } from 'react'
-import { HeroBg, HeroBg1, HeroBg2, HeroBgMobile, HeroBgMobile1, HeroBgMobile2 } from '@/utils/assets'
-import { Button } from '../custom'
-import { motion } from 'framer-motion'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { EffectFade, Autoplay} from 'swiper/modules'
-import Image from 'next/image'
-import { useRouter } from 'next/navigation'
+'use client';
+import { useState, useEffect, useCallback } from 'react';
+import {
+  HeroBg,
+  HeroBg1,
+  HeroBg2,
+  HeroBgMobile,
+  HeroBgMobile1,
+  HeroBgMobile2,
+} from '@/utils/assets';
+import { Button } from '../custom';
+import { motion } from 'framer-motion';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { EffectFade, Autoplay } from 'swiper/modules';
+import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 const HeroData = [
   {
@@ -30,24 +37,24 @@ const HeroData = [
     smallText: 'Unmatched Quality',
     imageSm: HeroBgMobile2,
   },
-]
+];
 
 const HeroSm = () => {
-  const router = useRouter()
-  const [counter, setCounter] = useState(0)
+  const router = useRouter();
+  const [counter, setCounter] = useState(0);
   const handleNext = useCallback(() => {
     if (counter !== 2) {
-      setCounter(counter + 1)
+      setCounter(counter + 1);
     } else {
-      setCounter(0)
+      setCounter(0);
     }
-  }, [counter])
+  }, [counter]);
   useEffect(() => {
     const interval = setInterval(() => {
-      handleNext()
-    }, 3000)
-    return () => clearInterval(interval)
-  }, [handleNext])
+      handleNext();
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [handleNext]);
   return (
     <>
       <section>
@@ -68,7 +75,9 @@ const HeroSm = () => {
             key={HeroData[counter].headingWhiteText}
             className="font-metropolis text-[2.8rem] font-bold text-white"
           >
-            <span className="text-red-base">{HeroData[counter].headingRedText} </span>
+            <span className="text-red-base">
+              {HeroData[counter].headingRedText}{' '}
+            </span>
             {HeroData[counter].headingWhiteText}
           </motion.div>
           <motion.p
@@ -81,28 +90,37 @@ const HeroSm = () => {
           >
             {HeroData[counter].smallText}
           </motion.p>
-          <Button className={'!px-10 !text-base'} onClick={() => router.push('/contact')}>
+          <Button
+            className={'!px-10 !text-base'}
+            onClick={() => router.push('/contact')}
+          >
             BUILD WITH US
           </Button>
         </div>
       </section>
     </>
-  )
-}
+  );
+};
 const HeroLg = () => {
-  const router = useRouter()
+  const router = useRouter();
   return (
     <section className="relative mr-5 pt-28 md:ml-5 lg:ml-20 lg:h-screen 2xl:mx-40">
       <div className="absolute top-[120px] z-10 2xl:top-[150px]">
         <b className="flex items-center font-metropolis leading-[145%] md:w-[550px] lg:w-[700px] 2xl:w-[800px]">
           <span className="mt-5 w-full uppercase leading-snug md:text-[3rem] lg:text-[3.5rem] 2xl:text-[4rem]">
-            <span>MANUFACTURERS OF </span>
-            <span className="upper text-red-base">Innovative Surfaces</span>
-            <span> in INDIA.</span>
+            <span>
+              TRANSFORM <br /> YOUR SPACES WITH{' '}
+            </span>
+            <br />
+            <span className="upper text-red-base">PARE</span>
           </span>
         </b>
-        <Button className={'mt-5 !px-8'} variant="outlined" onClick={() => router.push('/contact')}>
-          BUILD WITH US
+        <Button
+          className={'mt-5 !px-4 lg:!text-3xl'}
+          variant="outlined"
+          onClick={() => navigate('/contact')}
+        >
+          VIEW PROJECT
         </Button>
       </div>
       <Swiper
@@ -117,19 +135,19 @@ const HeroLg = () => {
             <SwiperSlide key={i} className="">
               <Image
                 src={el.imageLg}
-                width={'1900'}
-                height={'100'}
-                className="ml-auto !h-[450px] !w-[65vw] object-cover object-bottom 2xl:!h-[550px] 2xl:!w-[60vw]"
+                width={1000}
+                height={100}
+                className="ml-auto !h-[450px] !w-[65vw] object-cover object-bottom lg:!h-[430px] xl:!h-[510px] 2xl:!h-[600px] 2xl:!w-[60vw]"
                 alt="bg-hero"
                 key={el.imageLg}
               />
             </SwiperSlide>
-          )
+          );
         })}
       </Swiper>
     </section>
-  )
-}
+  );
+};
 
 const Hero = () => {
   return (
@@ -141,7 +159,7 @@ const Hero = () => {
         <HeroLg />
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Hero
+export default Hero;
