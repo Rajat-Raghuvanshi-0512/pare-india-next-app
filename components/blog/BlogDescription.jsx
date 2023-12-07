@@ -132,7 +132,7 @@ const BlogDescription = () => {
           <div>Power of personalization</div>
         </div>
       </div>
-      <div>
+      {/* <div>
         <BigDescription />
         <BigDescription />
         <SmallDescription />
@@ -140,7 +140,7 @@ const BlogDescription = () => {
         <SmallDescription />
         <SmallDescription />
         <SmallDescription />
-      </div>
+      </div> */}
       <hr className="mt-10" />
       <div className="share flex items-center gap-5 py-5">
         <div className="font-inter font-bold uppercase">Share</div>

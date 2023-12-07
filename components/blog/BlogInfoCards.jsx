@@ -1,12 +1,12 @@
-import { Blog1Avatar, Blog1Img1, Blog1Img2, Blog1Img3 } from '@/utils/assets'
-import Image from 'next/image'
+import { Blog1Avatar, Blog1Img1, Blog1Img2, Blog1Img3 } from '@/utils/assets';
+import Image from 'next/image';
 
 const blogCardData = [
   {
     image: Blog1Img1,
     category: 'Shopping Around',
     title: 'Expert Tips from Our Design Team',
-    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    desc: 'Expert Tips from Our Design Team',
     creatorProfile: Blog1Avatar,
     creatorName: 'Jasmin',
     creatorInfo: 'Personal Finance Writer',
@@ -16,7 +16,7 @@ const blogCardData = [
     image: Blog1Img2,
     category: 'Shopping Around',
     title: 'Beautiful Tile Designs: Our Top Picks',
-    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    desc: 'Beautiful Tile Designs: Our Top Picks',
     creatorProfile: Blog1Avatar,
     creatorName: 'Jasmin',
     creatorInfo: 'Personal Finance Writer',
@@ -26,17 +26,30 @@ const blogCardData = [
     image: Blog1Img3,
     category: 'Shopping Around',
     title: 'Tips and Tricks for a Professional-looking Finish',
-    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    desc: 'Tips and Tricks for a Professional-looking Finish',
     creatorProfile: Blog1Avatar,
     creatorName: 'Jasmin',
     creatorInfo: 'Personal Finance Writer',
     id: 3,
   },
-]
-const BlogCard = ({ image, category, title, desc, creatorProfile, creatorName, creatorInfo }) => {
+];
+const BlogCard = ({
+  image,
+  category,
+  title,
+  desc,
+  creatorProfile,
+  creatorName,
+  creatorInfo,
+}) => {
   return (
     <div className="flex flex-col font-inter">
-      <Image src={image} alt="blogpost" loading="lazy" className="w-full object-cover" />
+      <Image
+        src={image}
+        alt="blogpost"
+        loading="lazy"
+        className="w-full object-cover"
+      />
       <p className="py-3 text-sm font-bold uppercase">{category}</p>
       <h6 className="text-2xl font-bold">{title}</h6>
       <p className="py-3 text-sm text-[#5D5D5C]">{desc}</p>
@@ -49,8 +62,8 @@ const BlogCard = ({ image, category, title, desc, creatorProfile, creatorName, c
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 const BlogInfoCards = () => {
   return (
@@ -59,7 +72,7 @@ const BlogInfoCards = () => {
         <BlogCard key={blogdata.id} {...blogdata} />
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default BlogInfoCards
+export default BlogInfoCards;
