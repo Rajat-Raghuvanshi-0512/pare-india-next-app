@@ -40,6 +40,8 @@ const navLinks = [
   {
     text: 'products',
     path: '/products',
+    dropdown: ['Innov+', 'Easy+', 'Dura+', 'Innov2+'],
+    links: ['product/1/', 'product/2/', 'product/3/', 'product/4/'],
   },
   {
     text: 'gallery',
@@ -48,6 +50,7 @@ const navLinks = [
   {
     text: 'resources',
     dropdown: ['faq', 'blog', 'downloads'],
+    links: ['faq', 'blog', 'downloads'],
   },
   {
     text: 'contact us',
@@ -66,7 +69,8 @@ const navLinksSm = [
   },
   {
     text: 'products',
-    path: '/products',
+    dropdown: ['Innov+', 'Easy+', 'Dura+', 'Innov2+'],
+    links: ['product/1/', 'product/2/', 'product/3/', 'product/4/'],
   },
   {
     text: 'gallery',
@@ -93,6 +97,7 @@ const navLinksSm = [
 const NavSm = ({ isScrolled }) => {
   const { isOpen, closeModal, openModal } = useModal();
   const [resourcesOpen, setResourcesOpen] = useState(false);
+  const [productsOpen, setProductsOpen] = useState(false);
   const pathname = usePathname();
   return (
     <nav
@@ -132,11 +137,16 @@ const NavSm = ({ isScrolled }) => {
           <div className="flex h-screen flex-col items-end gap-5 overflow-hidden pb-10">
             <div className="pt-5">
               <Image
-                src={resourcesOpen ? BackButton : CloseIcon}
+                src={resourcesOpen || productsOpen ? BackButton : CloseIcon}
                 alt="close"
                 className="ml-auto h-10 w-10"
                 onClick={
-                  resourcesOpen ? () => setResourcesOpen(false) : closeModal
+                  resourcesOpen || productsOpen
+                    ? () => {
+                        setResourcesOpen(false);
+                        setProductsOpen(false);
+                      }
+                    : closeModal
                 }
               />
             </div>
@@ -144,7 +154,11 @@ const NavSm = ({ isScrolled }) => {
               className={` mt-auto flex w-full flex-col items-end justify-end gap-7 text-white`}
             >
               {navLinksSm.map((link) => {
-                if (resourcesOpen && link.text !== 'resources') return null;
+                if (
+                  (productsOpen && link.text !== 'products') ||
+                  (resourcesOpen && link.text !== 'resources')
+                )
+                  return null;
                 return (
                   <li key={link.text}>
                     {resourcesOpen && (
@@ -162,12 +176,29 @@ const NavSm = ({ isScrolled }) => {
                         ))}
                       </div>
                     )}
+                    {productsOpen && (
+                      <div className="flex flex-col items-end gap-7 pb-10">
+                        {link?.dropdown?.map((item, id) => (
+                          <div key={item}>
+                            <Link
+                              href={`/${link.links[id]}`}
+                              className="font-montserrat text-3xl uppercase"
+                              onClick={closeModal}
+                            >
+                              {item}
+                            </Link>
+                          </div>
+                        ))}
+                      </div>
+                    )}
                     <Link
-                      href={`${link.path}`}
+                      href={`${link.path || ''}`}
                       className="ml-10 w-full text-right font-montserrat text-3xl uppercase"
                       onClick={
                         link.text === 'resources'
                           ? () => setResourcesOpen(true)
+                          : link.text === 'products'
+                          ? () => setProductsOpen(true)
                           : closeModal
                       }
                     >
@@ -309,10 +340,10 @@ const NavLg = ({ isScrolled, hide }) => {
                     link?.dropdown && 'bg-[#EBEBEB]'
                   }`}
                 >
-                  {link?.dropdown?.map((item) => (
+                  {link?.dropdown?.map((item, id) => (
                     <div key={item} className="py-1">
                       <Link
-                        href={`/${item}`}
+                        href={`/${link.links[id]}`}
                         className="cursor-pointer font-montserrat text-lg uppercase duration-200 hover:text-red-base"
                       >
                         {item}
