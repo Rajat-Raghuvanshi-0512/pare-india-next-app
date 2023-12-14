@@ -2,6 +2,7 @@
 import { Button } from '../../custom';
 import { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { EffectFade, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
 import { useRouter } from 'next/navigation';
@@ -59,9 +60,9 @@ const P1Section2 = ({ data }) => {
           </div>
           <div className="relative h-full w-full">
             <Swiper
-              // modules={[EffectFade, Autoplay]}
+              modules={[EffectFade, Autoplay]}
               effect="fade"
-              autoplay={{ delay: 2000, disableOnInteraction: false }}
+              autoplay={{ delay: 1500, disableOnInteraction: false }}
               speed={800}
             >
               {item.productImgs.map((el, i) => {
