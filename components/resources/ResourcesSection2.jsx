@@ -18,40 +18,40 @@ const phoneImages = [
   {
     image: ResourcePhoneImg1,
     text: 'Soffit: Wooden Collection',
-    link: 'wooden.pdf',
+    link: '/wooden.pdf',
   },
   {
     image: ResourcePhoneImg2,
     text: 'Soffit: Forest Collection',
-    link: 'forest.pdf',
+    link: '/forest.pdf',
   },
   {
     image: ResourcePhoneImg3,
     text: 'Soffit: Real Wood Collection',
-    link: 'realwood.pdf',
+    link: '/realwood.pdf',
   },
-  { image: ResourcePhoneImg4, text: 'Louvers', link: 'louvers.pdf' },
-  { image: ResourcePhoneImg5, text: 'Dura+', link: 'dura.pdf' },
+  { image: ResourcePhoneImg4, text: 'Louvers', link: '/louvers.pdf' },
+  { image: ResourcePhoneImg5, text: 'Dura+', link: '/dura.pdf' },
 ];
 
 const images = [
   {
     image: ResourceImg1,
     text: 'Soffit: Wooden Collection',
-    link: 'wooden.pdf',
+    link: '/wooden.pdf',
   },
   {
     image: ResourceImg2,
     text: 'Soffit: Forest Collection',
-    link: 'forest.pdf',
+    link: '/forest.pdf',
   },
   {
     image: ResourceImg3,
     text: 'Soffit: Real Wood Collection',
-    link: 'realwood.pdf',
+    link: '/realwood.pdf',
   },
-  { image: ResourceImg4, text: 'Louvers', link: 'louvers.pdf' },
-  { image: ResourceImg5, text: 'Dura+', link: 'dura.pdf' },
+  { image: ResourceImg4, text: 'Louvers', link: '/louvers.pdf' },
+  { image: ResourceImg5, text: 'Dura+', link: '/dura.pdf' },
 ];
 
 const ResourcesSm = () => {

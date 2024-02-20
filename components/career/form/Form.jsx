@@ -10,6 +10,7 @@ const CareerForm = () => {
     'w-full rounded-sm bg-[#D9D9D940] p-2 font-montserrat outline-none text-sm mt-1';
   const labelStyle = 'block font-montserrat font-semibold';
   const [file, setFile] = useState(null);
+  const [loading, setLoading] = useState(false);
   const [data, setData] = useState({
     fname: '',
     lname: '',
@@ -29,6 +30,7 @@ const CareerForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (file === null) return;
     const {
       fname,
@@ -52,10 +54,24 @@ const CareerForm = () => {
     form.append('gender', gender);
     form.append('experience', experience);
     form.append('position', position);
+    setLoading(true);
     try {
       const response = await Api.post(CAREER_FORM_API, form);
       toast.success(response.data.message);
+      setData({
+        fname: '',
+        lname: '',
+        phone: '',
+        email: '',
+        education: '',
+        message: '',
+        gender: '',
+        experience: '',
+        position: '',
+      });
+      setLoading(false);
     } catch (error) {
+      setLoading(false);
       toast.error(error.response.data.message);
     }
   };
@@ -244,7 +260,9 @@ const CareerForm = () => {
             }
           />
         </div>
-        <Button className={'w-fit !px-10 !py-1'}>Submit</Button>
+        <Button className={'w-fit !px-10 !py-1'} disabled={loading}>
+          Submit
+        </Button>
       </form>
     </div>
   );

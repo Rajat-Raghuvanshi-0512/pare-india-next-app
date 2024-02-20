@@ -1,5 +1,5 @@
-export const BASE_URL = process.env.VITE_BACKEND_BASE_URL;
-export const API_VERSION = process.env.VITE_API_VERSION;
+export const BASE_URL = 'https://pare-backend.onrender.com';
+export const API_VERSION = '/v1';
 
 export const NEXT_PROJECT_API = '/contact/next-project';
 export const CONTACT_API = '/contact';

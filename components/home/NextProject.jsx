@@ -1,42 +1,53 @@
-'use client'
-import { useState } from 'react'
-import { NextProjectImg, NextProjectImgWeb } from '@/utils/assets'
-import { Button } from '../custom'
-import Api from '../../utils/api'
-import { NEXT_PROJECT_API } from '../../utils/endpoints'
-import { toast } from 'react-toastify'
-import Image from 'next/image'
+'use client';
+import { useState } from 'react';
+import { NextProjectImg, NextProjectImgWeb } from '@/utils/assets';
+import { Button } from '../custom';
+import Api from '../../utils/api';
+import { NEXT_PROJECT_API } from '../../utils/endpoints';
+import { toast } from 'react-toastify';
+import Image from 'next/image';
 
 const NextProject = () => {
   const [data, setData] = useState({
     name: '',
     phone: '',
     email: '',
-  })
+  });
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     try {
+      setLoading(true);
       const response = await Api.post(NEXT_PROJECT_API, data, {
         headers: {
           'Content-Type': 'application/json',
         },
-      })
-      toast.success(response.data.message)
+      });
+      setData({
+        name: '',
+        phone: '',
+        email: '',
+      });
+      setLoading(false);
+      toast.success(response.data.message);
     } catch (error) {
-      toast.error(error.response.data.message)
+      setLoading(false);
+      toast.error(error.response.data.message);
     }
-  }
+  };
   return (
     <section className="px-5 pb-5 pt-12 md:p-10 lg:px-16 xl:px-24 2xl:px-40">
       <div className="grid  md:grid-cols-2 md:gap-5">
         <div className="absolute mt-5 h-[500px] w-[70%] bg-[#151515B5] bg-opacity-25 p-4 md:static md:mt-0 md:h-auto md:w-full">
           <h2 className="font-metropolis text-3xl leading-snug md:text-4xl lg:text-6xl lg:leading-snug">
-            IT&apos;S TIME TO DISCUSS YOUR <span className="font-bold text-red-base">NEXT PROJECT</span>
+            IT&apos;S TIME TO DISCUSS YOUR{' '}
+            <span className="font-bold text-red-base">NEXT PROJECT</span>
           </h2>
           <p className="my-3 font-helvetica text-xs md:text-base lg:text-xl">
-            Let&apos;s get the ball rolling on your next project! Reach out to us at PARÉ and let&apos;s discuss how we
-            can bring your vision to life. We&apos;re excited to hear from you!
+            Let&apos;s get the ball rolling on your next project! Reach out to
+            us at PARÉ and let&apos;s discuss how we can bring your vision to
+            life. We&apos;re excited to hear from you!
           </p>
           <form onSubmit={handleSubmit}>
             <div className="flex flex-col gap-3">
@@ -47,7 +58,9 @@ const NextProject = () => {
                 required
                 name={data.name}
                 value={data.name}
-                onChange={(e) => setData((prev) => ({ ...prev, name: e.target.value }))}
+                onChange={(e) =>
+                  setData((prev) => ({ ...prev, name: e.target.value }))
+                }
               />
               <input
                 type="number"
@@ -56,7 +69,9 @@ const NextProject = () => {
                 required
                 name={data.phone}
                 value={data.phone}
-                onChange={(e) => setData((prev) => ({ ...prev, phone: e.target.value }))}
+                onChange={(e) =>
+                  setData((prev) => ({ ...prev, phone: e.target.value }))
+                }
               />
               <input
                 type="email"
@@ -65,13 +80,20 @@ const NextProject = () => {
                 required
                 name={data.email}
                 value={data.email}
-                onChange={(e) => setData((prev) => ({ ...prev, email: e.target.value }))}
+                onChange={(e) =>
+                  setData((prev) => ({ ...prev, email: e.target.value }))
+                }
               />
             </div>
             <p className="mb-5 mt-3 font-montserrat text-xs md:text-base lg:mb-8 lg:mt-5 lg:text-xl">
               I AGREE TO TERMS OF THE PRIVACY POLICY
             </p>
-            <Button variant="outlined" type="submit" className={'z-10'}>
+            <Button
+              variant="outlined"
+              type="submit"
+              className={'z-10'}
+              disabled={loading}
+            >
               SEND REQUEST
             </Button>
           </form>
@@ -96,7 +118,7 @@ const NextProject = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default NextProject
+export default NextProject;
